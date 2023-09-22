@@ -105,13 +105,6 @@ type postLoginRequest struct {
 	WaitTime   string `json:"wait_time"`
 }
 
-/*type postLoginResponse struct {
-	ReturnCode string `json:"return_code"`
-	ErrorCOunt string `json:"error_count"`
-	WaitTime   string `json:"wait_time"`
-	EncPubKey  string `json:"enc_pub_key"`
-}*/
-
 func (c *Client) Login() error {
 	url := "http://" + c.host + "/api/login"
 	resp, err := c.performRequest("GET", url, nil)
@@ -179,5 +172,26 @@ func (c *Client) GetCSRFToken() error {
 		return err
 	}
 	c.csrfToken = csrfToken
+	return nil
+}
+
+type postLogoutRequest struct {
+	User string `json:"username"`
+}
+
+func (c *Client) Logout() error {
+	requst := postLogoutRequest{
+		User: c.user,
+	}
+	jsonRequest, err := json.Marshal(requst)
+	if err != nil {
+		return err
+	}
+	url := "http://" + c.host + "/api/logout"
+	resp, err := c.performRequest("POST", url, bytes.NewBuffer(jsonRequest))
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
 	return nil
 }

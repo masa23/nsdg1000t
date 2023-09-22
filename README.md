@@ -1,5 +1,8 @@
 # nsdg1000t
 
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/masa23/nsdg1000t)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 ## 概要
 このリポジトリは、[SONY NSD-G1000T](https://www.nuro.jp/pdf/device/manual_NSD-G1000T.pdf) の情報を取得するためのgo言語のライブラリです。
 

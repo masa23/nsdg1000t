@@ -99,4 +99,8 @@ func main() {
 	pp.Println("supportDhcpLease", supportDhcpLease)
 	pp.Println("supportLanStatistics", supportLanStatistics)
 	pp.Println("supportWlanStatistics", supportWlanStatistics)
+
+	if err := client.Logout(); err != nil {
+		log.Fatalf("failed to logout: %v", err)
+	}
 }
